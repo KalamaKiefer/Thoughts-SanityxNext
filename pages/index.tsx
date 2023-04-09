@@ -50,7 +50,7 @@ export type Post = Keyed<{
 export async function getStaticProps({}: GetStaticPropsContext) {
 	const query = groq`
         {
-            "posts": *[_type == "post"] {
+            "posts": *[_type == "post"] | order(_createdAt desc) {
                 ...,
             }
         }
