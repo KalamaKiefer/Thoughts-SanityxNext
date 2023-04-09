@@ -1,0 +1,48 @@
+{
+	"name": "thoughts",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@heroicons/react": "^2.0.16",
+		"@next/font": "^13.1.6",
+		"@sanity/client": "^5.2.2",
+		"@sanity/image-url": "^1.0.2",
+		"@sanity/vision": "^3.5.1",
+		"@walltowall/helpers": "^7.0.2",
+		"@walltowall/map-to-components": "^2.0.0",
+		"clsx": "^1.2.1",
+		"next": "^13.0.4",
+		"next-sanity": "^4.1.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"tailwind-scrollbar-hide": "^1.1.7",
+		"zod": "^3.21.3"
+	},
+	"devDependencies": {
+		"@asyarb/tailwind-capsize": "^1.2.1",
+		"@capsizecss/metrics": "^0.3.0",
+		"@tailwindcss/aspect-ratio": "^0.4.0",
+		"@tailwindcss/forms": "^0.5.2",
+		"@types/node": "^18.7.13",
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
+		"@typescript-eslint/eslint-plugin": "^5.35.1",
+		"@typescript-eslint/parser": "^5.35.1",
+		"eslint": "^8.23.0",
+		"eslint-config-next": "^13.0.4",
+		"eslint-plugin-react": "^7.31.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"postcss": "^8.4.16",
+		"prettier": "^2.7.1",
+		"sanity-codegen": "^0.9.8",
+		"sanity-pills": "^1.13.0",
+		"sanity-plugin-iframe-pane": "^2.1.1",
+		"tailwindcss": "^3.1.8",
+		"typescript": "^4.8.2"
+	}
+}
