@@ -2,6 +2,7 @@
 import { type Post } from "@/pages"
 import Router from "next/router"
 import React, { useState } from "react"
+import { Spinner } from "./icons/Spinner"
 
 type FormState = "init" | "submitting" | "error"
 
@@ -35,6 +36,17 @@ const PostForm = () => {
 		return setState("init")
 	}
 
+	const getButtonContents = () => {
+		switch (state) {
+			case "init":
+				return "Submit"
+			case "submitting":
+				return <Spinner className="w-6" />
+			default:
+				null
+		}
+	}
+
 	return (
 		<form
 			className="flex flex-col bg-secondary shadow-xl rounded-xl px-2 py-4 gap-6 mt-[2rem] max-w-[500px]"
@@ -55,10 +67,10 @@ const PostForm = () => {
 				onChange={(e) => setPost(e.target.value)}
 			/>
 			<button
-				className="bg-primary border-none text-secondary hover:bg-secondary hover:text-black ease-in-out transition duration-300 border border-black py-2 rounded-full"
+				className="bg-primary border-none text-secondary lg:hover:bg-secondary lg:hover:text-black ease-in-out transition duration-300 border border-black py-2 rounded-full flex justify-center"
 				type="submit"
 			>
-				Submit
+				{getButtonContents()}
 			</button>
 		</form>
 	)
