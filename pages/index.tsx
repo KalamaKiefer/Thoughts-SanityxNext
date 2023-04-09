@@ -1,11 +1,11 @@
 import * as React from "react"
-import type { GetStaticPropsContext, InferGetStaticPropsType } from "next"
+import type { InferGetServerSidePropsType } from "next"
 import { type NextPageWithLayout } from "./_app"
 import { sanityClient, groq } from "@/sanity/client"
 import PostCard from "@/components/PostCard"
 import PostForm from "@/components/PostForm"
 
-type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>
+type HomePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const HomePage: NextPageWithLayout<HomePageProps> = ({ data }) => {
 	const allPosts = data.posts
@@ -47,7 +47,7 @@ export type Post = Keyed<{
 	_createdAt?: string
 }>
 
-export async function getStaticProps({}: GetStaticPropsContext) {
+export async function getServerSideProps() {
 	const query = groq`
         {
             "posts": *[_type == "post"] | order(_createdAt desc) {
@@ -62,7 +62,6 @@ export async function getStaticProps({}: GetStaticPropsContext) {
 		props: {
 			data,
 		},
-		revalidate: 10,
 	}
 }
 
