@@ -23,10 +23,12 @@ const HomePage: NextPageWithLayout<HomePageProps> = ({ data }) => {
 							return (
 								<PostCard
 									key={post._id}
+									postId={post._id}
 									userName={post.userName}
 									date={post._createdAt ?? ""}
 									text={post.postText}
-									className="last:mb-40"
+									likes={post.likes}
+									className="last:mb-40 flex flex-col"
 								/>
 							)
 						})
@@ -43,8 +45,9 @@ export type Keyed<T> = T & { _key?: string; _id?: string }
 export type Post = Keyed<{
 	userName: string
 	postText: string
-	likes?: number
+	likes: number
 	_createdAt?: string
+	_id: string
 }>
 
 export async function getServerSideProps() {

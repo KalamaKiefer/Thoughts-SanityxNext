@@ -14,14 +14,17 @@ export default async function handler(
 	request: NextRequest,
 	response: NextApiResponse,
 ) {
-	const body = request.body
+	const body = NewPost.safeParse(request.body)
 
-	const res = await sanityClient.create(
-		{ _type: "post", ...body },
-		{
-			token: process.env.SANITY_API_TOKEN,
-		},
-	)
+	if (body.success) {
+		const res = await sanityClient.create(
+			{ _type: "post", ...body.data },
+			{
+				token: process.env.SANITY_API_TOKEN,
+			},
+		)
+		return response.status(200).json(res)
+	}
 
-	return response.status(200).json(res)
+	return response.status(404).json("Error")
 }

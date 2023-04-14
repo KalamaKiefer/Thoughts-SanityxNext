@@ -16,9 +16,10 @@ const PostForm = () => {
 		e.preventDefault()
 		setState("submitting")
 
-		const newPost: Post = {
+		const newPost: Partial<Post> = {
 			userName: name,
 			postText: post,
+			likes: 0,
 		}
 
 		const res = await fetch("/api", {
@@ -49,22 +50,24 @@ const PostForm = () => {
 
 	return (
 		<form
-			className="flex flex-col bg-secondary shadow-xl rounded-xl px-2 py-4 gap-6 mt-[2rem] max-w-[500px]"
+			className="flex flex-col bg-secondary shadow-xl rounded-xl px-2 py-4 gap-6 mt-[2rem] max-w-[500px] lg:max-w-[700px] self-center w-full"
 			onSubmit={createPost}
 			method="POST"
 		>
 			<input
 				type="text"
 				placeholder="Display Name"
-				className="input input-bordered input-primary w-full placeholder:text-black placeholder:font-header placeholder:text-2xl font-prime text-lg bg-white focus:ring-0"
+				className="input input-primary w-full placeholder:text-black placeholder:font-header placeholder:text-2xl font-prime text-lg bg-white focus:ring-0 outline-none focus:border-primary"
 				value={name}
 				onChange={(e) => setName(e.target.value)}
+				required
 			/>
 			<textarea
-				className="textarea textarea-primary placeholder:text-black placeholder:font-header placeholder:text-2xl font-prime text-lg bg-white focus:ring-0"
+				className="textarea textarea-primary placeholder:text-black placeholder:font-header placeholder:text-2xl font-prime text-lg bg-white focus:ring-0 focus:border-primary"
 				placeholder="Write Some Thoughts?"
 				value={post}
 				onChange={(e) => setPost(e.target.value)}
+				required
 			/>
 			<button
 				className="bg-primary border-none text-secondary lg:hover:bg-secondary lg:hover:text-black ease-in-out transition duration-300 border border-black py-2 rounded-full flex justify-center"
