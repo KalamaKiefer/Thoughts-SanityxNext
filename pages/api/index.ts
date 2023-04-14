@@ -6,6 +6,7 @@ import { z } from "zod"
 const NewPost = z.object({
 	userName: z.string(),
 	postText: z.string(),
+	likes: z.number(),
 })
 
 export type NewPost = z.infer<typeof NewPost>
